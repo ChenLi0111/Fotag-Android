@@ -3,6 +3,7 @@ package com.example.c374li.fotagmobile;
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
@@ -12,8 +13,8 @@ import java.util.Observer;
 public class ToolBar extends LinearLayout implements Observer {
     private ImageCollectionModel imagecollectionmodel;
 
-    private Button clear_button;
-    private Button load_button;
+    private ImageButton clear_button;
+    private ImageButton load_button;
     private RatingBar rating_bar;
 
     ToolBar(Context context, ImageCollectionModel imagecollectionmodel) {
@@ -23,8 +24,8 @@ public class ToolBar extends LinearLayout implements Observer {
         this.imagecollectionmodel = imagecollectionmodel;
         imagecollectionmodel.addObserver(this);
 
-        clear_button = (Button) findViewById(R.id.clear_button);
-        load_button = (Button) findViewById(R.id.load_button);
+        clear_button = (ImageButton) findViewById(R.id.clear_button);
+        load_button = (ImageButton) findViewById(R.id.load_button);
         rating_bar = (RatingBar) findViewById(R.id.rating_bar);
     }
 
