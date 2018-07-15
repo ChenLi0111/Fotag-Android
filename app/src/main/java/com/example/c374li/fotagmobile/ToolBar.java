@@ -22,7 +22,6 @@ public class ToolBar extends LinearLayout implements Observer {
         View.inflate(context, R.layout.toolbar_layout, this);
 
         this.imagecollectionmodel = imagecollectionmodel;
-        imagecollectionmodel.addObserver(this);
 
         clear_button = (ImageButton) findViewById(R.id.clear_button);
         load_button = (ImageButton) findViewById(R.id.load_button);

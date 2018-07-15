@@ -17,6 +17,12 @@ public class MainActivity extends AppCompatActivity {
         ToolBar toolbar = new ToolBar(this, imagecollectionmodel);
         ViewGroup v1 = (ViewGroup) findViewById(R.id.mainactivity_1);
         v1.addView(toolbar);
+        imagecollectionmodel.addObserver(toolbar);
+
+        ImageCollectionView imagecollectionview = new ImageCollectionView(this, imagecollectionmodel);
+        ViewGroup v2 = (ViewGroup) findViewById(R.id.mainactivity_2);
+        v2.addView(imagecollectionview);
+        imagecollectionmodel.addObserver(imagecollectionview);
 
         imagecollectionmodel.call_notify();
     }
