@@ -1,6 +1,5 @@
 package com.example.c374li.fotagmobile;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 

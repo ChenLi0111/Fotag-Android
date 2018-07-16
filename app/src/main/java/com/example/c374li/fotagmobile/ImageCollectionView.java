@@ -3,7 +3,6 @@ package com.example.c374li.fotagmobile;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 
 import java.util.ArrayList;
