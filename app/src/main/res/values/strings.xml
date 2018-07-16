@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Fotag(c374li)</string>
+    <string name="DEBUG_FOTAG_ID">FOTAG</string>
 </resources>
