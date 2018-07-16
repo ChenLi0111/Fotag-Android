@@ -31,6 +31,10 @@ public class ImageCollectionModel extends Observable {
         return imagemodel_list;
     }
 
+    public void addto_imagemodel_list(ImageModel i) {
+        imagemodel_list.add(i);
+    }
+
     public void call_notify() {
         setChanged();
         notifyObservers();

@@ -37,6 +37,14 @@ public class ToolBar extends LinearLayout implements Observer {
             }
         });
 
+        load_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ImageModel imagemodel = new ImageModel(imagecollectionmodel, image);
+            }
+        });
+
         rating_bar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
