@@ -11,11 +11,13 @@
         android:id="@+id/singelimage"/>
 
     <RatingBar
+        android:id="@+id/singlerate"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_toEndOf="@+id/singleimage"/>
-    
+        android:stepSize="1"/>
+
     <ImageButton
+        android:id="@+id/singleclear"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:visibility="visible"

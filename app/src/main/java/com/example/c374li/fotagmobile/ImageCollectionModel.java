@@ -17,6 +17,7 @@ public class ImageCollectionModel extends Observable {
     public void set_userrate(int rate) {
         user_rate = rate;
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "set user rate to " + user_rate);
+        call_notify();
     }
 
     public int get_userrate() {
@@ -25,6 +26,7 @@ public class ImageCollectionModel extends Observable {
 
     public void set_imagemodel_list(ArrayList<ImageModel> imagemodel_list) {
         this.imagemodel_list = imagemodel_list;
+        call_notify();
     }
 
     public ArrayList<ImageModel> get_imagemodel_list() {
@@ -33,6 +35,7 @@ public class ImageCollectionModel extends Observable {
 
     public void addto_imagemodel_list(ImageModel i) {
         imagemodel_list.add(i);
+        call_notify();
     }
 
     public void call_notify() {

@@ -1,29 +1,33 @@
 package com.example.c374li.fotagmobile;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
-
 import java.util.Observable;
 import java.util.Observer;
 
 public class ToolBar extends LinearLayout implements Observer {
     private ImageCollectionModel imagecollectionmodel;
+    private ImageCollectionView imagecollectionview;
 
     private ImageButton clear_button;
     private ImageButton load_button;
     private RatingBar rating_bar;
 
-    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel) {
+    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ImageCollectionView i) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: Constructor");
         View.inflate(context, R.layout.toolbar_layout, this);
 
         this.imagecollectionmodel = imagecollectionmodel;
+        this.imagecollectionview = i;
 
         clear_button = (ImageButton) findViewById(R.id.clear_button);
         load_button = (ImageButton) findViewById(R.id.load_button);
@@ -40,8 +44,15 @@ public class ToolBar extends LinearLayout implements Observer {
         load_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                ImageModel imagemodel = new ImageModel(imagecollectionmodel, image);
+                    Resources res = getResources();
+                    Drawable drawable = res.getDrawable(R.drawable.l1);
+                    //FileInputStream fis = new FileInputStream("l1.png");
+                    Bitmap b  = BitmapFactory.decodeResource(res, 1);
+                    ImageModel i_m = new ImageModel(imagecollectionmodel, b);
+                    ImageView i_v = new ImageView(imagecollectionview.getContext() ,i_m);
+                    i_m.addObserver(i_v);
+                    imagecollectionview.addto_imageview_list(i_v);
+                    imagecollectionmodel.addto_imagemodel_list(i_m);
             }
         });
 
