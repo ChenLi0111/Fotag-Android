@@ -1,10 +1,6 @@
 package com.example.c374li.fotagmobile;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -30,7 +26,10 @@ public class ImageView extends LinearLayout implements Observer {
 
         image_button = (ImageButton) findViewById(R.id.singelimage);
         rating_bar = (RatingBar) findViewById(R.id.singlerate);
+        rating_bar.setNumStars(5);
         clear_button = (ImageButton) findViewById(R.id.singleclear);
+
+        image_button.setImageDrawable(imagemodel.get_image());
 
         clear_button.setOnClickListener(new OnClickListener() {
             @Override

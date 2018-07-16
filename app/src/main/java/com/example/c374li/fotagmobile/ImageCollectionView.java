@@ -16,7 +16,7 @@ public class ImageCollectionView extends TableLayout implements Observer {
 
     ImageCollectionView(Context context, ImageCollectionModel imagecollectionmodel) {
         super(context);
-        View.inflate(context, R.layout.vertical_layout, this);
+        View.inflate(context, R.layout.scroll, this);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageCollectionView: Constructor");
 
         this.imagecollectionmodel = imagecollectionmodel;
@@ -24,6 +24,7 @@ public class ImageCollectionView extends TableLayout implements Observer {
 
     public void addto_imageview_list(com.example.c374li.fotagmobile.ImageView i) {
         imageview_list.add(i);
+        this.addView(i);
     }
 
     public ArrayList<com.example.c374li.fotagmobile.ImageView> get_imageview_list() {
