@@ -47,11 +47,6 @@ public class ImageviewAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         layoutinflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-/*
-        view = new View(context);
-        view = layoutinflater.inflate(R.layout.singleimage_layout, null);
-        */
-
         Drawable drawable = context.getDrawable(images[position]);
         ImageModel i_m = new ImageModel(imagecollectionmodel, drawable);
         ImageView i_v = new ImageView(context, i_m);
