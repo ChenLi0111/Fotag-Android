@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/singelimage"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:visibility="visible" />
+
+    <RatingBar
+        android:id="@+id/singlerate"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/singelimage"
+        android:numStars="5"
+        android:stepSize="1"
+        android:visibility="visible" />
+
+    <ImageButton
+        android:id="@+id/singleclear"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_below="@+id/singelimage"
+        android:layout_toEndOf="@+id/singlerate"
+        android:visibility="visible"
+        app:srcCompat="@android:drawable/ic_notification_clear_all" />
+</RelativeLayout>
