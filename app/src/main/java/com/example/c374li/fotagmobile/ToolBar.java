@@ -5,15 +5,21 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 public class ToolBar extends LinearLayout implements Observer {
     private ImageCollectionModel imagecollectionmodel;
     private ImageCollectionView imagecollectionview;
+    private ArrayAdapter<ImageView> gridViewArrayAdapter;
+    private List<ImageView> plantsList;
 
     private ImageButton clear_button;
     private ImageButton load_button;
@@ -91,15 +97,34 @@ public class ToolBar extends LinearLayout implements Observer {
         i_m_10.addObserver(i_v_10);
         imagecollectionview.addto_imageview_list(i_v_10);
         imagecollectionmodel.addto_imagemodel_list(i_m_10);
+
+        plantsList.add(plantsList.size(), i_v_1);
+        plantsList.add(plantsList.size(), i_v_2);
+        plantsList.add(plantsList.size(), i_v_3);
+        plantsList.add(plantsList.size(), i_v_4);
+        plantsList.add(plantsList.size(), i_v_5);
+        plantsList.add(plantsList.size(), i_v_6);
+        plantsList.add(plantsList.size(), i_v_7);
+        plantsList.add(plantsList.size(), i_v_8);
+        plantsList.add(plantsList.size(), i_v_9);
+        plantsList.add(plantsList.size(), i_v_10);
+
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: " + imagecollectionview.get_imageview_list().size());
+        GridView gv = (GridView) findViewById(R.id.mainactivity_2);
+
+        gridViewArrayAdapter.notifyDataSetChanged();
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: " + gridViewArrayAdapter.getCount());
     }
 
-    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ImageCollectionView i) {
+    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ImageCollectionView i, ArrayAdapter<ImageView> gridViewArrayAdapter, List<ImageView> plantsList) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: Constructor");
         View.inflate(context, R.layout.toolbar_layout, this);
 
         this.imagecollectionmodel = imagecollectionmodel;
         this.imagecollectionview = i;
+        this.gridViewArrayAdapter = gridViewArrayAdapter;
+        this.plantsList = plantsList;
 
         clear_button = (ImageButton) findViewById(R.id.clear_button);
         load_button = (ImageButton) findViewById(R.id.load_button);

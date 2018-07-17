@@ -40,6 +40,6 @@ public class ImageCollectionView extends TableLayout implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {
-        System.out.print("ImageCollectionView update");
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageCollectionView update");
     }
 }
