@@ -6,20 +6,21 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
 public class ToolBar extends LinearLayout implements Observer {
     private ImageCollectionModel imagecollectionmodel;
-    private ImageCollectionView imagecollectionview;
     private ArrayAdapter<ImageView> gridViewArrayAdapter;
     private List<ImageView> plantsList;
+    private ArrayList<ImageView> imageview_list;
+
 
     private ImageButton clear_button;
     private ImageButton load_button;
@@ -39,63 +40,53 @@ public class ToolBar extends LinearLayout implements Observer {
         Drawable drawable_10 = res.getDrawable(R.drawable.l10);
 
         ImageModel i_m_1 = new ImageModel(imagecollectionmodel, drawable_1);
-        ImageView i_v_1 = new ImageView(imagecollectionview.getContext(), i_m_1);
+        ImageView i_v_1 = new ImageView(this.getContext(), i_m_1);
         i_m_1.addObserver(i_v_1);
-        imagecollectionview.addto_imageview_list(i_v_1);
         imagecollectionmodel.addto_imagemodel_list(i_m_1);
 
         ImageModel i_m_2 = new ImageModel(imagecollectionmodel, drawable_2);
-        ImageView i_v_2 = new ImageView(imagecollectionview.getContext(), i_m_2);
+        ImageView i_v_2 = new ImageView(this.getContext(), i_m_2);
         i_m_2.addObserver(i_v_2);
-        imagecollectionview.addto_imageview_list(i_v_2);
         imagecollectionmodel.addto_imagemodel_list(i_m_2);
 
         ImageModel i_m_3 = new ImageModel(imagecollectionmodel, drawable_3);
-        ImageView i_v_3 = new ImageView(imagecollectionview.getContext(), i_m_3);
+        ImageView i_v_3 = new ImageView(this.getContext(), i_m_3);
         i_m_3.addObserver(i_v_3);
-        imagecollectionview.addto_imageview_list(i_v_3);
         imagecollectionmodel.addto_imagemodel_list(i_m_3);
 
         ImageModel i_m_4 = new ImageModel(imagecollectionmodel, drawable_4);
-        ImageView i_v_4 = new ImageView(imagecollectionview.getContext(), i_m_4);
+        ImageView i_v_4 = new ImageView(this.getContext(), i_m_4);
         i_m_4.addObserver(i_v_4);
-        imagecollectionview.addto_imageview_list(i_v_4);
         imagecollectionmodel.addto_imagemodel_list(i_m_4);
 
         ImageModel i_m_5 = new ImageModel(imagecollectionmodel, drawable_5);
-        ImageView i_v_5 = new ImageView(imagecollectionview.getContext(), i_m_5);
+        ImageView i_v_5 = new ImageView(this.getContext(), i_m_5);
         i_m_5.addObserver(i_v_5);
-        imagecollectionview.addto_imageview_list(i_v_5);
         imagecollectionmodel.addto_imagemodel_list(i_m_5);
 
         ImageModel i_m_6 = new ImageModel(imagecollectionmodel, drawable_6);
-        ImageView i_v_6 = new ImageView(imagecollectionview.getContext(), i_m_6);
+        ImageView i_v_6 = new ImageView(this.getContext(), i_m_6);
         i_m_6.addObserver(i_v_6);
-        imagecollectionview.addto_imageview_list(i_v_6);
         imagecollectionmodel.addto_imagemodel_list(i_m_6);
 
         ImageModel i_m_7 = new ImageModel(imagecollectionmodel, drawable_7);
-        ImageView i_v_7 = new ImageView(imagecollectionview.getContext(), i_m_7);
+        ImageView i_v_7 = new ImageView(this.getContext(), i_m_7);
         i_m_7.addObserver(i_v_7);
-        imagecollectionview.addto_imageview_list(i_v_7);
         imagecollectionmodel.addto_imagemodel_list(i_m_7);
 
         ImageModel i_m_8 = new ImageModel(imagecollectionmodel, drawable_8);
-        ImageView i_v_8 = new ImageView(imagecollectionview.getContext(), i_m_8);
+        ImageView i_v_8 = new ImageView(this.getContext(), i_m_8);
         i_m_8.addObserver(i_v_8);
-        imagecollectionview.addto_imageview_list(i_v_8);
         imagecollectionmodel.addto_imagemodel_list(i_m_8);
 
         ImageModel i_m_9 = new ImageModel(imagecollectionmodel, drawable_9);
-        ImageView i_v_9 = new ImageView(imagecollectionview.getContext(), i_m_9);
+        ImageView i_v_9 = new ImageView(this.getContext(), i_m_9);
         i_m_9.addObserver(i_v_9);
-        imagecollectionview.addto_imageview_list(i_v_9);
         imagecollectionmodel.addto_imagemodel_list(i_m_9);
 
         ImageModel i_m_10 = new ImageModel(imagecollectionmodel, drawable_10);
-        ImageView i_v_10 = new ImageView(imagecollectionview.getContext(), i_m_10);
+        ImageView i_v_10 = new ImageView(this.getContext(), i_m_10);
         i_m_10.addObserver(i_v_10);
-        imagecollectionview.addto_imageview_list(i_v_10);
         imagecollectionmodel.addto_imagemodel_list(i_m_10);
 
         plantsList.add(plantsList.size(), i_v_1);
@@ -109,22 +100,20 @@ public class ToolBar extends LinearLayout implements Observer {
         plantsList.add(plantsList.size(), i_v_9);
         plantsList.add(plantsList.size(), i_v_10);
 
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: " + imagecollectionview.get_imageview_list().size());
-        GridView gv = (GridView) findViewById(R.id.mainactivity_2);
-
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: " + imageview_list.size());
         gridViewArrayAdapter.notifyDataSetChanged();
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: " + gridViewArrayAdapter.getCount());
     }
 
-    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ImageCollectionView i, ArrayAdapter<ImageView> gridViewArrayAdapter, List<ImageView> plantsList) {
+    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayAdapter<ImageView> gridViewArrayAdapter, List<ImageView> plantsList, ArrayList<ImageView> imageview_list) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: Constructor");
         View.inflate(context, R.layout.toolbar_layout, this);
 
         this.imagecollectionmodel = imagecollectionmodel;
-        this.imagecollectionview = i;
         this.gridViewArrayAdapter = gridViewArrayAdapter;
         this.plantsList = plantsList;
+        this.imageview_list = imageview_list;
 
         clear_button = (ImageButton) findViewById(R.id.clear_button);
         load_button = (ImageButton) findViewById(R.id.load_button);
