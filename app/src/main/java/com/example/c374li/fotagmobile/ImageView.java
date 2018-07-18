@@ -36,6 +36,7 @@ public class ImageView extends LinearLayout implements Observer {
             @Override
             public void onClick(View view) {
                 imagemodel.set_rate(0);
+                Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "image rate clear");
                 rating_bar.setRating(0);
             }
         });
@@ -44,6 +45,7 @@ public class ImageView extends LinearLayout implements Observer {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 imagemodel.set_rate((int) ratingBar.getRating());
+                Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "image rate to " + ratingBar.getRating());
             }
         });
     }

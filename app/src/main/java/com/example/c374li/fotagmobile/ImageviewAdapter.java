@@ -1,7 +1,6 @@
 package com.example.c374li.fotagmobile;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +45,8 @@ public class ImageviewAdapter extends BaseAdapter {
         ImageView imageview = array.get(position);
         ViewHolder viewholder;
         if (view == null) {
-            LayoutInflater inflater =LayoutInflater.from(context);
+            Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "first");
+            LayoutInflater inflater = LayoutInflater.from(context);
             view = inflater.inflate(R.layout.singleimage_layout, viewGroup, false);
             viewholder = new ViewHolder();
             viewholder.image_button = view.findViewById(R.id.singelimage);
@@ -54,10 +54,11 @@ public class ImageviewAdapter extends BaseAdapter {
             viewholder.clear_button = view.findViewById(R.id.singleclear);
             view.setTag(viewholder);
         } else {
+
             viewholder = (ViewHolder) view.getTag();
         }
-
         viewholder.image_button.setImageDrawable(imageview.get_image());
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "second " + imageview.get_rating());
         viewholder.ratingbar.setNumStars(imageview.get_rating());
 
         return view;
