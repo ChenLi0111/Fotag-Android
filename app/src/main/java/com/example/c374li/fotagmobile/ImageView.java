@@ -1,6 +1,7 @@
 package com.example.c374li.fotagmobile;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -17,12 +18,15 @@ public class ImageView extends LinearLayout implements Observer {
     private RatingBar rating_bar;
     private ImageButton clear_button;
 
-    ImageView(Context context, final ImageModel imagemodel) {
+    private ImageviewAdapter imageviewadapter;
+
+    ImageView(Context context, final ImageModel imagemodel, ImageviewAdapter imageviewadapter) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView: Constructor");
         View.inflate(context, R.layout.singleimage_layout, this);
 
         this.imagemodel = imagemodel;
+        this.imageviewadapter = imageviewadapter;
 
         image_button = (ImageButton) findViewById(R.id.singelimage);
         rating_bar = (RatingBar) findViewById(R.id.singlerate);
@@ -35,6 +39,7 @@ public class ImageView extends LinearLayout implements Observer {
             @Override
             public void onClick(View view) {
                 imagemodel.set_rate(0);
+                Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "image rate clear");
                 rating_bar.setRating(0);
             }
         });
@@ -43,6 +48,7 @@ public class ImageView extends LinearLayout implements Observer {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 imagemodel.set_rate((int) ratingBar.getRating());
+                Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "image rate to " + ratingBar.getRating());
             }
         });
     }
@@ -50,5 +56,6 @@ public class ImageView extends LinearLayout implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView update");
+        imageviewadapter.notifyDataSetChanged();
     }
 }

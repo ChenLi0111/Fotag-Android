@@ -16,24 +16,13 @@ public class ImageModel extends Observable {
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageModel: Constructor");
     }
 
-    public void set_image(Drawable i) {
-        image = i;
-    }
-
     public Drawable get_image() {
         return image;
     }
 
-    public void set_imagecollectionmodel(ImageCollectionModel imagecollectionmodel) {
-        this.imagecollectionmodel = imagecollectionmodel;
-        call_notify();
-    }
-    public ImageCollectionModel get_imagecollectionmodel() {
-        return imagecollectionmodel;
-    }
-
     public void set_rate(int r) {
         rate = r;
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "user rate changed to " + rate);
         call_notify();
     }
 
