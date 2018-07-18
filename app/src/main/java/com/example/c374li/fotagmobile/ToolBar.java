@@ -5,15 +5,11 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -27,18 +23,7 @@ public class ToolBar extends LinearLayout implements Observer {
     private ImageButton clear_button;
     private ImageButton load_button;
     private RatingBar rating_bar;
-    private int[] images = {
-            R.drawable.l1,
-            R.drawable.l2,
-            R.drawable.l3,
-            R.drawable.l4,
-            R.drawable.l5,
-            R.drawable.l6,
-            R.drawable.l7,
-            R.drawable.l8,
-            R.drawable.l9,
-            R.drawable.l10
-    };
+
     private ArrayList<ImageView> now = new ArrayList<ImageView>();
 
     public void load_first() {
@@ -123,13 +108,11 @@ public class ToolBar extends LinearLayout implements Observer {
 
     public void change_rate() {
         now.clear();
-
         for (int i = 0; i < 10; ++i) {
             if (imagecollectionmodel.get_imagemodel_list().get(i).get_rate() >= imagecollectionmodel.get_userrate()) {
                 now.add(imageview_list.get(i));
             }
         }
-
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "now size = " + now.size());
 
         imageviewadapter.change_data(now);
