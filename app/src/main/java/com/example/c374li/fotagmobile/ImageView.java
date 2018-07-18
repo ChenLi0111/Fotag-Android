@@ -18,12 +18,15 @@ public class ImageView extends LinearLayout implements Observer {
     private RatingBar rating_bar;
     private ImageButton clear_button;
 
-    ImageView(Context context, final ImageModel imagemodel) {
+    private ImageviewAdapter imageviewadapter;
+
+    ImageView(Context context, final ImageModel imagemodel, ImageviewAdapter imageviewadapter) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView: Constructor");
         View.inflate(context, R.layout.singleimage_layout, this);
 
         this.imagemodel = imagemodel;
+        this.imageviewadapter = imageviewadapter;
 
         image_button = (ImageButton) findViewById(R.id.singelimage);
         rating_bar = (RatingBar) findViewById(R.id.singlerate);
@@ -53,6 +56,6 @@ public class ImageView extends LinearLayout implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView update");
-        postInvalidate();
+        imageviewadapter.notifyDataSetChanged();
     }
 }
