@@ -12,7 +12,9 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<com.example.c374li.fotagmobile.ImageView> imageview_list = new ArrayList<com.example.c374li.fotagmobile.ImageView>();
     private GridView gridview;
 
-    private int[] empty = {};
+    //private int[] empty = {};
+
+    private ArrayList<Integer> empty = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         imagecollectionmodel = new ImageCollectionModel();
 
         gridview = (GridView) findViewById(R.id.mainactivity_2);
+        empty.clear();
         ImageviewAdapter imageviewadapter = new ImageviewAdapter(this, empty, imagecollectionmodel, imageview_list);
         gridview.setAdapter(imageviewadapter);
 

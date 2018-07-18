@@ -1,5 +1,6 @@
 package com.example.c374li.fotagmobile;
 
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
@@ -9,11 +10,17 @@ public class ImageModel extends Observable {
     private ImageCollectionModel imagecollectionmodel;
     private int rate = 0;
     private Drawable image;
+    private int id;
 
-    ImageModel(ImageCollectionModel imagecollectionmodel, Drawable image) {
+    ImageModel(ImageCollectionModel imagecollectionmodel, Drawable image, int id) {
         this.imagecollectionmodel = imagecollectionmodel;
         this.image = image;
+        this.id = id;
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageModel: Constructor");
+    }
+
+    public int get_id() {
+        return id;
     }
 
     public void set_image(Drawable i) {
@@ -34,6 +41,7 @@ public class ImageModel extends Observable {
 
     public void set_rate(int r) {
         rate = r;
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "user rate changed to " + rate);
         call_notify();
     }
 

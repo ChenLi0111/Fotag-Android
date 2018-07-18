@@ -8,7 +8,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -23,8 +26,7 @@ public class ToolBar extends LinearLayout implements Observer {
     private ImageButton clear_button;
     private ImageButton load_button;
     private RatingBar rating_bar;
-
-    int[] images = {
+    private int[] images = {
             R.drawable.l1,
             R.drawable.l2,
             R.drawable.l3,
@@ -37,12 +39,31 @@ public class ToolBar extends LinearLayout implements Observer {
             R.drawable.l9,
             R.drawable.l10
     };
+    private ArrayList<Integer> now = new ArrayList<Integer>();
 
     public void call_load() {
-
-        imageviewadapter.change(images);
+        now.clear();
+        for (int i: images) {
+            now.add(i);
+        }
+        imageviewadapter.change(now);
         imageviewadapter.notifyDataSetChanged();
-        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: " + gridViewArrayAdapter.getCount());
+    }
+
+    public void change_rate() {
+        now.clear();
+
+        ArrayList<ImageModel> imagemodel_list = imagecollectionmodel.get_imagemodel_list();
+
+        for(ImageModel i: imagemodel_list) {
+            if (i.get_rate() >= imagecollectionmodel.get_userrate()) {
+                now.add(i.get_id());
+                Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "choose + " + i.get_id());
+            }
+        }
+
+        imageviewadapter.change(now);
+        imageviewadapter.notifyDataSetChanged();
     }
 
     ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayList<com.example.c374li.fotagmobile.ImageView> imageview_list, GridView gridview, ImageviewAdapter ima) {
@@ -79,6 +100,7 @@ public class ToolBar extends LinearLayout implements Observer {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 imagecollectionmodel.set_userrate((int) ratingBar.getRating());
+                change_rate();
             }
         });
     }
