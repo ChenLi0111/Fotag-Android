@@ -39,7 +39,7 @@ public class ToolBar extends LinearLayout implements Observer {
             R.drawable.l9,
             R.drawable.l10
     };
-    private ArrayList<Integer> now = new ArrayList<Integer>();
+    private ArrayList<ImageView> now = new ArrayList<ImageView>();
 
     public void load_first() {
         Resources res = getResources();
@@ -64,7 +64,7 @@ public class ToolBar extends LinearLayout implements Observer {
         ImageView i_v_2 = new ImageView(context, i_m_2, imageviewadapter);
         i_m_2.addObserver(i_v_2);
         imageview_list.add(i_v_2);
-        imagecollectionmodel.addto_imagemodel_list(i_m_1);
+        imagecollectionmodel.addto_imagemodel_list(i_m_2);
 
         ImageModel i_m_3 = new ImageModel(imagecollectionmodel, drawable_3);
         ImageView i_v_3 = new ImageView(context, i_m_3, imageviewadapter);
@@ -121,22 +121,20 @@ public class ToolBar extends LinearLayout implements Observer {
         imageviewadapter.notifyDataSetChanged();
     }
 
-    /*
     public void change_rate() {
         now.clear();
 
-        ArrayList<ImageModel> imagemodel_list = imagecollectionmodel.get_imagemodel_list();
-
-        for(ImageModel i: imagemodel_list) {
-            if (i.get_rate() >= imagecollectionmodel.get_userrate()) {
-                now.add(i.get_id());
-                Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "choose + " + i.get_id());
+        for (int i = 0; i < 10; ++i) {
+            if (imagecollectionmodel.get_imagemodel_list().get(i).get_rate() >= imagecollectionmodel.get_userrate()) {
+                now.add(imageview_list.get(i));
             }
         }
 
-        imageviewadapter.change(now);
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "now size = " + now.size());
+
+        imageviewadapter.change_data(now);
         imageviewadapter.notifyDataSetChanged();
-    } */
+    }
 
     ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayList<com.example.c374li.fotagmobile.ImageView> imageview_list, ImageviewAdapter ima) {
         super(context);
@@ -171,7 +169,7 @@ public class ToolBar extends LinearLayout implements Observer {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
                 imagecollectionmodel.set_userrate((int) ratingBar.getRating());
-                //change_rate();
+                change_rate();
             }
         });
     }
