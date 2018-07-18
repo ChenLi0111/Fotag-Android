@@ -50,16 +50,9 @@ public class ImageView extends LinearLayout implements Observer {
         });
     }
 
-    public int get_rating() {
-        return (int)rating_bar.getRating();
-    }
-
-    public Drawable get_image() {
-        return imagemodel.get_image();
-    }
-
     @Override
     public void update(Observable observable, Object o) {
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView update");
+        postInvalidate();
     }
 }

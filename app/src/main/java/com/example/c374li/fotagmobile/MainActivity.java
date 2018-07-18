@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         imagecollectionmodel = new ImageCollectionModel();
 
         gridview = (GridView) findViewById(R.id.mainactivity_2);
-        ImageviewAdapter imageviewadapter = new ImageviewAdapter(this, imagecollectionmodel, imageview_list);
+        ImageviewAdapter imageviewadapter = new ImageviewAdapter(this, imageview_list);
         gridview.setAdapter(imageviewadapter);
 
         ToolBar toolbar = new ToolBar(this, imagecollectionmodel, imageview_list, gridview, imageviewadapter);
