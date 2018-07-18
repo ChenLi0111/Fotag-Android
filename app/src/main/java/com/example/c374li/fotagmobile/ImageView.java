@@ -1,6 +1,7 @@
 package com.example.c374li.fotagmobile;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
@@ -45,6 +46,14 @@ public class ImageView extends LinearLayout implements Observer {
                 imagemodel.set_rate((int) ratingBar.getRating());
             }
         });
+    }
+
+    public int get_rating() {
+        return rating_bar.getNumStars();
+    }
+
+    public Drawable get_image() {
+        return imagemodel.get_image();
     }
 
     @Override

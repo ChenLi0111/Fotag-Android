@@ -7,32 +7,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
+import android.widget.RatingBar;
+
 import java.util.ArrayList;
 
 
 public class ImageviewAdapter extends BaseAdapter {
     private Context context;
-    //private int [] images;
-    private ArrayList<Integer> images = new ArrayList<Integer>();
     private View view;
     private LayoutInflater layoutinflater;
     private ImageCollectionModel imagecollectionmodel;
     private ArrayList<com.example.c374li.fotagmobile.ImageView> array;
 
-    ImageviewAdapter(Context context, ArrayList<Integer> images, ImageCollectionModel i, ArrayList<com.example.c374li.fotagmobile.ImageView> ic) {
+    ImageviewAdapter(Context context, ImageCollectionModel i, ArrayList<com.example.c374li.fotagmobile.ImageView> ic) {
         this.context = context;
-        this.images = images;
         this.imagecollectionmodel = i;
         this.array = ic;
     }
 
-    public void change(ArrayList<Integer> images) {
-        this.images = images;
-    }
-
     @Override
     public int getCount() {
-        return images.size();
+        return array.size();
     }
 
     @Override
@@ -47,18 +43,34 @@ public class ImageviewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        layoutinflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        ImageView imageview = array.get(position);
+        ViewHolder viewholder;
+        if (view == null) {
+            LayoutInflater inflater =LayoutInflater.from(context);
+            view = inflater.inflate(R.layout.singleimage_layout, viewGroup, false);
+            viewholder = new ViewHolder();
+            viewholder.image_button = view.findViewById(R.id.singelimage);
+            viewholder.ratingbar = view.findViewById(R.id.singlerate);
+            viewholder.clear_button = view.findViewById(R.id.singleclear);
+            view.setTag(viewholder);
+        } else {
+            viewholder = (ViewHolder) view.getTag();
+        }
 
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "new view id = " + images.get(position));
+        viewholder.image_button.setImageDrawable(imageview.get_image());
+        viewholder.ratingbar.setNumStars(imageview.get_rating());
 
-        Drawable drawable = context.getDrawable(images.get(position));
-        ImageModel i_m = new ImageModel(imagecollectionmodel, drawable, images.get(position));
-        ImageView i_v = new ImageView(context, i_m);
-        i_m.addObserver(i_v);
-        array.add(i_v);
-        imagecollectionmodel.addto_imagemodel_list(i_m);
+        return view;
+    }
 
-        return i_v;
+    static class ViewHolder{
+        ImageButton image_button;
+        RatingBar ratingbar;
+        ImageButton clear_button;
+    }
+
+    void change_data(ArrayList<com.example.c374li.fotagmobile.ImageView> array) {
+        this.array = array;
     }
 
     @Override

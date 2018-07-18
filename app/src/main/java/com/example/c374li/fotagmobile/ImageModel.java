@@ -10,17 +10,11 @@ public class ImageModel extends Observable {
     private ImageCollectionModel imagecollectionmodel;
     private int rate = 0;
     private Drawable image;
-    private int id;
 
-    ImageModel(ImageCollectionModel imagecollectionmodel, Drawable image, int id) {
+    ImageModel(ImageCollectionModel imagecollectionmodel, Drawable image) {
         this.imagecollectionmodel = imagecollectionmodel;
         this.image = image;
-        this.id = id;
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageModel: Constructor");
-    }
-
-    public int get_id() {
-        return id;
     }
 
     public void set_image(Drawable i) {
