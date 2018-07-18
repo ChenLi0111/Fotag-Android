@@ -52,9 +52,9 @@ public class ImageviewAdapter extends BaseAdapter {
             viewholder.image_button = view.findViewById(R.id.singelimage);
             viewholder.ratingbar = view.findViewById(R.id.singlerate);
             viewholder.clear_button = view.findViewById(R.id.singleclear);
+            viewholder.ratingbar.setRating(imagecollectionmodel.get_imagemodel_list().get(position).get_rate());
             view.setTag(viewholder);
         } else {
-
             viewholder = (ViewHolder) view.getTag();
         }
         viewholder.image_button.setImageDrawable(imageview.get_image());

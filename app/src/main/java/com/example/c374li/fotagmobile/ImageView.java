@@ -51,7 +51,7 @@ public class ImageView extends LinearLayout implements Observer {
     }
 
     public int get_rating() {
-        return rating_bar.getNumStars();
+        return (int)rating_bar.getRating();
     }
 
     public Drawable get_image() {
