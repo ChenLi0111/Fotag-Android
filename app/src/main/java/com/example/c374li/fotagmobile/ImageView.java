@@ -1,11 +1,13 @@
 package com.example.c374li.fotagmobile;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RatingBar;
 
 import java.util.Observable;
@@ -13,6 +15,8 @@ import java.util.Observer;
 
 public class ImageView extends LinearLayout implements Observer {
     private ImageModel imagemodel;
+    private android.widget.ImageView imageview;
+    private Dialog dialog;
 
     private ImageButton image_button;
     private RatingBar rating_bar;
@@ -20,7 +24,7 @@ public class ImageView extends LinearLayout implements Observer {
 
     private ImageviewAdapter imageviewadapter;
 
-    ImageView(Context context, final ImageModel imagemodel, ImageviewAdapter imageviewadapter) {
+    ImageView(final Context context, final ImageModel imagemodel, final ImageviewAdapter imageviewadapter) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView: Constructor");
         View.inflate(context, R.layout.singleimage_layout, this);
@@ -28,12 +32,37 @@ public class ImageView extends LinearLayout implements Observer {
         this.imagemodel = imagemodel;
         this.imageviewadapter = imageviewadapter;
 
+
         image_button = (ImageButton) findViewById(R.id.singelimage);
         rating_bar = (RatingBar) findViewById(R.id.singlerate);
         rating_bar.setNumStars(5);
         clear_button = (ImageButton) findViewById(R.id.singleclear);
 
         image_button.setImageDrawable(imagemodel.get_image());
+
+        imageview = new android.widget.ImageView(context);
+        imageview.setImageDrawable(imagemodel.get_image());
+
+        dialog = new Dialog(context);
+        dialog.setContentView(imageview);
+
+        image_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "?? "+ (dialog == null) + " " + (imageview == null));
+                imageviewadapter.notifyDataSetChanged();
+                imageview.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.getWindow();
+                dialog.setCancelable(true);
+                dialog.show();
+            }
+        });
 
         clear_button.setOnClickListener(new OnClickListener() {
             @Override
