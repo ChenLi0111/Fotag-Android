@@ -107,6 +107,8 @@ public class ToolBar extends LinearLayout implements Observer {
     }
 
     public void change_rate() {
+        if (imagecollectionmodel.get_imagemodel_list().size() == 0) {return;}
+
         now.clear();
         for (int i = 0; i < 10; ++i) {
             if (imagecollectionmodel.get_imagemodel_list().get(i).get_rate() >= imagecollectionmodel.get_userrate()) {
