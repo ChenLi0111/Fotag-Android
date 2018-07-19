@@ -1,7 +1,6 @@
 package com.example.c374li.fotagmobile;
 
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import java.io.Serializable;
 import java.util.Observable;
@@ -14,7 +13,7 @@ public class ImageModel extends Observable implements Serializable {
     ImageModel(ImageCollectionModel imagecollectionmodel, Drawable image) {
         this.imagecollectionmodel = imagecollectionmodel;
         this.image = image;
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageModel: Constructor");
+        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageModel: Constructor");
     }
 
     public Drawable get_image() {
@@ -23,7 +22,7 @@ public class ImageModel extends Observable implements Serializable {
 
     public void set_rate(int r) {
         rate = r;
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "user rate changed to " + rate);
+        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "user rate changed to " + rate);
         call_notify();
     }
 

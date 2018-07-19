@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
@@ -113,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "MainActivity: Save model state.");
+        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "MainActivity: Save model state.");
 
         outState.putInt("userrate", imagecollectionmodel.get_userrate());
         outState.putInt("has", imagecollectionmodel.get_has());
@@ -130,24 +129,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "MainActivity: restore.");
-
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "user rate = " + savedInstanceState.getInt("userrate"));
+        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "MainActivity: restore.");
+        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "user rate = " + savedInstanceState.getInt("userrate"));
 
         if (savedInstanceState.getInt("has") == 1) {
-            for (int i = 0; i < 10; ++i) {
+         /*   for (int i = 0; i < 10; ++i) {
                 Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "image rate " + i + " " + savedInstanceState.getInt("image_rate_" + i));
-            }
+            } */
 
             load_first();
-            Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "size  = " + imagecollectionmodel.get_imagemodel_list().size());
+            //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "size  = " + imagecollectionmodel.get_imagemodel_list().size());
 
             for (int i = 0; i < 10; ++i) {
                 imagecollectionmodel.get_imagemodel_list().get(i).set_rate(savedInstanceState.getInt("image_rate_" + i));
             }
 
             toolbar.change_rate();
-
         }
     }
 }
