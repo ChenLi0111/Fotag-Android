@@ -3,12 +3,10 @@ package com.example.c374li.fotagmobile;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class ItemViewAdapter extends BaseAdapter implements Serializable {
+public class ItemViewAdapter extends BaseAdapter {
     private ArrayList<ItemView> array;
 
     ItemViewAdapter(ArrayList<ItemView> ic) {

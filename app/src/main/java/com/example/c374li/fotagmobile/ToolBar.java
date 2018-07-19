@@ -8,12 +8,11 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ToolBar extends LinearLayout implements Observer, Serializable {
+public class ToolBar extends LinearLayout implements Observer {
     private ImageCollectionModel imagecollectionmodel;
     private ArrayList<ItemView> itemview_list = new ArrayList<ItemView>();
     private ItemViewAdapter itemviewadapter;

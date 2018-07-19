@@ -1,10 +1,9 @@
 package com.example.c374li.fotagmobile;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class ImageCollectionModel extends Observable implements Serializable {
+public class ImageCollectionModel extends Observable {
     private ArrayList<ImageModel> imagemodel_list = new ArrayList<ImageModel>();
     private int user_rate;
     private int has = 0;

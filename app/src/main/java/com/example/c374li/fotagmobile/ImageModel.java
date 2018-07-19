@@ -1,11 +1,9 @@
 package com.example.c374li.fotagmobile;
 
 import android.graphics.drawable.Drawable;
-
-import java.io.Serializable;
 import java.util.Observable;
 
-public class ImageModel extends Observable implements Serializable {
+public class ImageModel extends Observable {
     private ImageCollectionModel imagecollectionmodel;
     private int rate = 0;
     private Drawable image;

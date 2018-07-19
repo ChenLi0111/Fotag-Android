@@ -8,11 +8,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
-import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ItemView extends LinearLayout implements Observer, Serializable {
+public class ItemView extends LinearLayout implements Observer {
     private ImageModel imagemodel;
     private ImageView imageview;
     private Dialog dialog;
