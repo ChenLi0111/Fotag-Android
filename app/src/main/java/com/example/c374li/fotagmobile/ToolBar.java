@@ -22,6 +22,7 @@ public class ToolBar extends LinearLayout implements Observer, Serializable {
 
     private ImageButton clear_button;
     private ImageButton load_button;
+    private ImageButton trash_button;
     private RatingBar rating_bar;
 
     private ArrayList<ItemView> now = new ArrayList<ItemView>();
@@ -145,7 +146,7 @@ public class ToolBar extends LinearLayout implements Observer, Serializable {
         itemviewadapter.notifyDataSetChanged();
     }
 
-    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayList<ItemView> itemview_list, ItemViewAdapter ima) {
+    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, final ArrayList<ItemView> itemview_list, ItemViewAdapter ima) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: Constructor");
         View.inflate(context, R.layout.toolbar_layout, this);
@@ -157,6 +158,7 @@ public class ToolBar extends LinearLayout implements Observer, Serializable {
 
         clear_button = (ImageButton) findViewById(R.id.clear_button);
         load_button = (ImageButton) findViewById(R.id.load_button);
+        trash_button = (ImageButton) findViewById(R.id.trash_button);
         rating_bar = (RatingBar) findViewById(R.id.rating_bar);
 
         clear_button.setOnClickListener(new OnClickListener() {
@@ -172,6 +174,18 @@ public class ToolBar extends LinearLayout implements Observer, Serializable {
             public void onClick(View view) {
                 call_load();
                 imagecollectionmodel.set_has(1);
+            }
+        });
+
+        trash_button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                now.clear();
+                itemview_list.clear();
+                imagecollectionmodel.get_imagemodel_list().clear();
+                imagecollectionmodel.set_has(0);
+                itemviewadapter.change_data(now);
+                itemviewadapter.notifyDataSetChanged();
             }
         });
 

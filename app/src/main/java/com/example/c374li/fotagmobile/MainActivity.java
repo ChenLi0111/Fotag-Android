@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt("userrate", imagecollectionmodel.get_userrate());
         outState.putInt("has", imagecollectionmodel.get_has());
 
-        if(imagecollectionmodel.get_imagemodel_list().size() == 0) {
+        if(imagecollectionmodel.get_has() == 0) {
             return;
         } else {
             for (int i = 0; i < 10; ++i) {
@@ -138,15 +138,16 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < 10; ++i) {
                 Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "image rate " + i + " " + savedInstanceState.getInt("image_rate_" + i));
             }
+
+            load_first();
+            Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "size  = " + imagecollectionmodel.get_imagemodel_list().size());
+
+            for (int i = 0; i < 10; ++i) {
+                imagecollectionmodel.get_imagemodel_list().get(i).set_rate(savedInstanceState.getInt("image_rate_" + i));
+            }
+
+            toolbar.change_rate();
+
         }
-
-        load_first();
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "size  = " + imagecollectionmodel.get_imagemodel_list().size());
-
-        for (int i = 0; i < 10; ++i) {
-            imagecollectionmodel.get_imagemodel_list().get(i).set_rate(savedInstanceState.getInt("image_rate_" + i));
-        }
-
-        toolbar.change_rate();
     }
 }
