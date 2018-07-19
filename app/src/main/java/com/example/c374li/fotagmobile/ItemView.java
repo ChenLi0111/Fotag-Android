@@ -11,10 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
 
+import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ItemView extends LinearLayout implements Observer {
+public class ItemView extends LinearLayout implements Observer, Serializable {
     private ImageModel imagemodel;
     private ImageView imageview;
     private Dialog dialog;
@@ -86,6 +87,7 @@ public class ItemView extends LinearLayout implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ItemView update");
+        rating_bar.setRating(imagemodel.get_rate());
         itemviewadapter.notifyDataSetChanged();
     }
 }

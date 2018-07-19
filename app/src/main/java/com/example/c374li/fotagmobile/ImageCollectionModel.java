@@ -2,12 +2,14 @@ package com.example.c374li.fotagmobile;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class ImageCollectionModel extends Observable {
+public class ImageCollectionModel extends Observable implements Serializable {
     private ArrayList<ImageModel> imagemodel_list = new ArrayList<ImageModel>();
     private int user_rate;
+    private int has = 0;
 
     ImageCollectionModel() {
         user_rate = 0;
@@ -22,6 +24,14 @@ public class ImageCollectionModel extends Observable {
 
     public int get_userrate() {
         return user_rate;
+    }
+
+    public int get_has() {
+        return has;
+    }
+
+    public void set_has(int i) {
+        has = i;
     }
 
     public void set_imagemodel_list(ArrayList<ImageModel> imagemodel_list) {

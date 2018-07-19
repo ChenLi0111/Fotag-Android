@@ -5,17 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class ItemViewAdapter extends BaseAdapter {
-    private Context context;
-    private View view;
-    private LayoutInflater layoutinflater;
+public class ItemViewAdapter extends BaseAdapter implements Serializable {
     private ArrayList<ItemView> array;
 
-    ItemViewAdapter(Context context, ArrayList<ItemView> ic) {
-        this.context = context;
+    ItemViewAdapter(ArrayList<ItemView> ic) {
         this.array = ic;
     }
 

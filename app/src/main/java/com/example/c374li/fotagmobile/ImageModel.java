@@ -3,9 +3,10 @@ package com.example.c374li.fotagmobile;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.Observable;
 
-public class ImageModel extends Observable {
+public class ImageModel extends Observable implements Serializable {
     private ImageCollectionModel imagecollectionmodel;
     private int rate = 0;
     private Drawable image;

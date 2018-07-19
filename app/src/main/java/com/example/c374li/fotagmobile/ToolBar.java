@@ -9,22 +9,46 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ToolBar extends LinearLayout implements Observer {
+public class ToolBar extends LinearLayout implements Observer, Serializable {
     private ImageCollectionModel imagecollectionmodel;
     private ArrayList<ItemView> itemview_list = new ArrayList<ItemView>();
     private ItemViewAdapter itemviewadapter;
     private Context context;
-
 
     private ImageButton clear_button;
     private ImageButton load_button;
     private RatingBar rating_bar;
 
     private ArrayList<ItemView> now = new ArrayList<ItemView>();
+
+    public ArrayList<ItemView> get_now() {
+        return now;
+    }
+
+    public Context get_context() {
+        return context;
+    }
+
+    public void set_imagecollectionmodel(ImageCollectionModel imagecollectionmodel) {
+        this.imagecollectionmodel = imagecollectionmodel;
+    }
+
+    public void set_itemview_list(ArrayList<ItemView> itemview_list) {
+        this.itemview_list = itemview_list;
+    }
+
+    public void set_itemviewadapter(ItemViewAdapter itemviewadapter) {
+        this.itemviewadapter = itemviewadapter;
+    }
+
+    public RatingBar get_rating_bar() {
+        return rating_bar;
+    }
 
     public void load_first() {
         Resources res = getResources();
@@ -121,7 +145,7 @@ public class ToolBar extends LinearLayout implements Observer {
         itemviewadapter.notifyDataSetChanged();
     }
 
-    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayList<com.example.c374li.fotagmobile.ItemView> itemview_list, ItemViewAdapter ima) {
+    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayList<ItemView> itemview_list, ItemViewAdapter ima) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: Constructor");
         View.inflate(context, R.layout.toolbar_layout, this);
@@ -147,6 +171,7 @@ public class ToolBar extends LinearLayout implements Observer {
             @Override
             public void onClick(View view) {
                 call_load();
+                imagecollectionmodel.set_has(1);
             }
         });
 
