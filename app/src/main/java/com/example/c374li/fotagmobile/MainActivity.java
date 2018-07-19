@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         outState.putInt("userrate", imagecollectionmodel.get_userrate());
         outState.putInt("has", imagecollectionmodel.get_has());
+        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "has = " + imagecollectionmodel.get_has());
 
         if(imagecollectionmodel.get_has() == 0) {
             return;
@@ -131,9 +132,11 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "MainActivity: restore.");
         //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "user rate = " + savedInstanceState.getInt("userrate"));
+        //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "has = " + savedInstanceState.getInt("has"));
 
         if (savedInstanceState.getInt("has") == 1) {
-         /*   for (int i = 0; i < 10; ++i) {
+            /*
+            for (int i = 0; i < 10; ++i) {
                 Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "image rate " + i + " " + savedInstanceState.getInt("image_rate_" + i));
             } */
 
@@ -145,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             toolbar.change_rate();
+            imagecollectionmodel.set_has(1);
         }
     }
 }
