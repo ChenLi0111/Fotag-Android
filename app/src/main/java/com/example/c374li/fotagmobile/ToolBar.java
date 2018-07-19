@@ -15,8 +15,8 @@ import java.util.Observer;
 
 public class ToolBar extends LinearLayout implements Observer {
     private ImageCollectionModel imagecollectionmodel;
-    private ArrayList<ImageView> imageview_list = new ArrayList<ImageView>();
-    private ImageviewAdapter imageviewadapter;
+    private ArrayList<ItemView> imageview_list = new ArrayList<ItemView>();
+    private ItemViewAdapter imageviewadapter;
     private Context context;
 
 
@@ -24,7 +24,7 @@ public class ToolBar extends LinearLayout implements Observer {
     private ImageButton load_button;
     private RatingBar rating_bar;
 
-    private ArrayList<ImageView> now = new ArrayList<ImageView>();
+    private ArrayList<ItemView> now = new ArrayList<ItemView>();
 
     public void load_first() {
         Resources res = getResources();
@@ -40,61 +40,61 @@ public class ToolBar extends LinearLayout implements Observer {
         Drawable drawable_10 = res.getDrawable(R.drawable.l10);
 
         ImageModel i_m_1 = new ImageModel(imagecollectionmodel, drawable_1);
-        ImageView i_v_1 = new ImageView(context, i_m_1, imageviewadapter);
+        ItemView i_v_1 = new ItemView(context, i_m_1, imageviewadapter);
         i_m_1.addObserver(i_v_1);
         imageview_list.add(i_v_1);
         imagecollectionmodel.addto_imagemodel_list(i_m_1);
 
         ImageModel i_m_2 = new ImageModel(imagecollectionmodel, drawable_2);
-        ImageView i_v_2 = new ImageView(context, i_m_2, imageviewadapter);
+        ItemView i_v_2 = new ItemView(context, i_m_2, imageviewadapter);
         i_m_2.addObserver(i_v_2);
         imageview_list.add(i_v_2);
         imagecollectionmodel.addto_imagemodel_list(i_m_2);
 
         ImageModel i_m_3 = new ImageModel(imagecollectionmodel, drawable_3);
-        ImageView i_v_3 = new ImageView(context, i_m_3, imageviewadapter);
+        ItemView i_v_3 = new ItemView(context, i_m_3, imageviewadapter);
         i_m_3.addObserver(i_v_3);
         imageview_list.add(i_v_3);
         imagecollectionmodel.addto_imagemodel_list(i_m_3);
 
         ImageModel i_m_4 = new ImageModel(imagecollectionmodel, drawable_4);
-        ImageView i_v_4 = new ImageView(context, i_m_4, imageviewadapter);
+        ItemView i_v_4 = new ItemView(context, i_m_4, imageviewadapter);
         i_m_4.addObserver(i_v_4);
         imageview_list.add(i_v_4);
         imagecollectionmodel.addto_imagemodel_list(i_m_4);
 
         ImageModel i_m_5 = new ImageModel(imagecollectionmodel, drawable_5);
-        ImageView i_v_5 = new ImageView(context, i_m_5, imageviewadapter);
+        ItemView i_v_5 = new ItemView(context, i_m_5, imageviewadapter);
         i_m_5.addObserver(i_v_5);
         imageview_list.add(i_v_5);
         imagecollectionmodel.addto_imagemodel_list(i_m_5);
 
         ImageModel i_m_6 = new ImageModel(imagecollectionmodel, drawable_6);
-        ImageView i_v_6 = new ImageView(context, i_m_6, imageviewadapter);
+        ItemView i_v_6 = new ItemView(context, i_m_6, imageviewadapter);
         i_m_6.addObserver(i_v_6);
         imageview_list.add(i_v_6);
         imagecollectionmodel.addto_imagemodel_list(i_m_6);
 
         ImageModel i_m_7 = new ImageModel(imagecollectionmodel, drawable_7);
-        ImageView i_v_7 = new ImageView(context, i_m_7, imageviewadapter);
+        ItemView i_v_7 = new ItemView(context, i_m_7, imageviewadapter);
         i_m_7.addObserver(i_v_7);
         imageview_list.add(i_v_7);
         imagecollectionmodel.addto_imagemodel_list(i_m_7);
 
         ImageModel i_m_8 = new ImageModel(imagecollectionmodel, drawable_8);
-        ImageView i_v_8 = new ImageView(context, i_m_8, imageviewadapter);
+        ItemView i_v_8 = new ItemView(context, i_m_8, imageviewadapter);
         i_m_8.addObserver(i_v_8);
         imageview_list.add(i_v_8);
         imagecollectionmodel.addto_imagemodel_list(i_m_8);
 
         ImageModel i_m_9 = new ImageModel(imagecollectionmodel, drawable_9);
-        ImageView i_v_9 = new ImageView(context, i_m_9, imageviewadapter);
+        ItemView i_v_9 = new ItemView(context, i_m_9, imageviewadapter);
         i_m_9.addObserver(i_v_9);
         imageview_list.add(i_v_9);
         imagecollectionmodel.addto_imagemodel_list(i_m_9);
 
         ImageModel i_m_10 = new ImageModel(imagecollectionmodel, drawable_10);
-        ImageView i_v_10 = new ImageView(context, i_m_10, imageviewadapter);
+        ItemView i_v_10 = new ItemView(context, i_m_10, imageviewadapter);
         i_m_10.addObserver(i_v_10);
         imageview_list.add(i_v_10);
         imagecollectionmodel.addto_imagemodel_list(i_m_10);
@@ -121,7 +121,7 @@ public class ToolBar extends LinearLayout implements Observer {
         imageviewadapter.notifyDataSetChanged();
     }
 
-    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayList<com.example.c374li.fotagmobile.ImageView> imageview_list, ImageviewAdapter ima) {
+    ToolBar(Context context, final ImageCollectionModel imagecollectionmodel, ArrayList<com.example.c374li.fotagmobile.ItemView> imageview_list, ItemViewAdapter ima) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ToolBar: Constructor");
         View.inflate(context, R.layout.toolbar_layout, this);

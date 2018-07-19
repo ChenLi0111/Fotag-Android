@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private ImageCollectionModel imagecollectionmodel;
-    private ArrayList<com.example.c374li.fotagmobile.ImageView> imageview_list = new ArrayList<com.example.c374li.fotagmobile.ImageView>();
+    private ArrayList<ItemView> imageview_list = new ArrayList<ItemView>();
     private GridView gridview;
 
     @Override
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         imagecollectionmodel = new ImageCollectionModel();
 
         gridview = (GridView) findViewById(R.id.mainactivity_2);
-        ImageviewAdapter imageviewadapter = new ImageviewAdapter(this, imageview_list);
+        ItemViewAdapter imageviewadapter = new ItemViewAdapter(this, imageview_list);
         gridview.setAdapter(imageviewadapter);
 
         ToolBar toolbar = new ToolBar(this, imagecollectionmodel, imageview_list, imageviewadapter);

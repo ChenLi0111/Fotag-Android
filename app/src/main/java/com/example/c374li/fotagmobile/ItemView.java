@@ -13,7 +13,7 @@ import android.widget.RatingBar;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ImageView extends LinearLayout implements Observer {
+public class ItemView extends LinearLayout implements Observer {
     private ImageModel imagemodel;
     private android.widget.ImageView imageview;
     private Dialog dialog;
@@ -22,11 +22,11 @@ public class ImageView extends LinearLayout implements Observer {
     private RatingBar rating_bar;
     private ImageButton clear_button;
 
-    private ImageviewAdapter imageviewadapter;
+    private ItemViewAdapter imageviewadapter;
 
-    ImageView(final Context context, final ImageModel imagemodel, final ImageviewAdapter imageviewadapter) {
+    ItemView(final Context context, final ImageModel imagemodel, final ItemViewAdapter imageviewadapter) {
         super(context);
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView: Constructor");
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ItemView: Constructor");
         View.inflate(context, R.layout.singleimage_layout, this);
 
         this.imagemodel = imagemodel;
@@ -84,7 +84,7 @@ public class ImageView extends LinearLayout implements Observer {
 
     @Override
     public void update(Observable observable, Object o) {
-        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ImageView update");
+        Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ItemView update");
         imageviewadapter.notifyDataSetChanged();
     }
 }

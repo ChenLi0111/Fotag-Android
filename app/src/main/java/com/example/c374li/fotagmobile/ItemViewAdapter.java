@@ -8,13 +8,13 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 
 
-public class ImageviewAdapter extends BaseAdapter {
+public class ItemViewAdapter extends BaseAdapter {
     private Context context;
     private View view;
     private LayoutInflater layoutinflater;
-    private ArrayList<com.example.c374li.fotagmobile.ImageView> array;
+    private ArrayList<ItemView> array;
 
-    ImageviewAdapter(Context context, ArrayList<com.example.c374li.fotagmobile.ImageView> ic) {
+    ItemViewAdapter(Context context, ArrayList<ItemView> ic) {
         this.context = context;
         this.array = ic;
     }
@@ -39,7 +39,7 @@ public class ImageviewAdapter extends BaseAdapter {
         return array.get(position);
     }
 
-    void change_data(ArrayList<com.example.c374li.fotagmobile.ImageView> array) {
+    void change_data(ArrayList<ItemView> array) {
         this.array = array;
     }
 
