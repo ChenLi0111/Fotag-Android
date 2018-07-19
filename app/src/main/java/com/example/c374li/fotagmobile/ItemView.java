@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RatingBar;
@@ -15,22 +16,22 @@ import java.util.Observer;
 
 public class ItemView extends LinearLayout implements Observer {
     private ImageModel imagemodel;
-    private android.widget.ImageView imageview;
+    private ImageView imageview;
     private Dialog dialog;
 
     private ImageButton image_button;
     private RatingBar rating_bar;
     private ImageButton clear_button;
 
-    private ItemViewAdapter imageviewadapter;
+    private ItemViewAdapter itemviewadapter;
 
-    ItemView(final Context context, final ImageModel imagemodel, final ItemViewAdapter imageviewadapter) {
+    ItemView(final Context context, final ImageModel imagemodel, final ItemViewAdapter itemviewadapter) {
         super(context);
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ItemView: Constructor");
         View.inflate(context, R.layout.singleimage_layout, this);
 
         this.imagemodel = imagemodel;
-        this.imageviewadapter = imageviewadapter;
+        this.itemviewadapter = itemviewadapter;
 
 
         image_button = (ImageButton) findViewById(R.id.singelimage);
@@ -40,7 +41,7 @@ public class ItemView extends LinearLayout implements Observer {
 
         image_button.setImageDrawable(imagemodel.get_image());
 
-        imageview = new android.widget.ImageView(context);
+        imageview = new ImageView(context);
         imageview.setImageDrawable(imagemodel.get_image());
 
         dialog = new Dialog(context);
@@ -50,7 +51,7 @@ public class ItemView extends LinearLayout implements Observer {
             @Override
             public void onClick(View view) {
                 Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "?? "+ (dialog == null) + " " + (imageview == null));
-                imageviewadapter.notifyDataSetChanged();
+                itemviewadapter.notifyDataSetChanged();
                 imageview.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -85,6 +86,6 @@ public class ItemView extends LinearLayout implements Observer {
     @Override
     public void update(Observable observable, Object o) {
         Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "ItemView update");
-        imageviewadapter.notifyDataSetChanged();
+        itemviewadapter.notifyDataSetChanged();
     }
 }
