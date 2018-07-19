@@ -7,12 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".ToolBar">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="191dp"
+        android:layout_height="49dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Fotag(c374li)"
+        android:textSize="30sp"
+        android:visibility="visible" />
+
     <ImageButton
         android:id="@+id/clear_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textView"
         android:visibility="visible"
         app:srcCompat="@android:drawable/ic_notification_clear_all" />
 
