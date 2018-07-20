@@ -118,9 +118,7 @@ public class MainActivity extends AppCompatActivity {
         outState.putInt("has", imagecollectionmodel.get_has());
         //Log.d(String.valueOf(R.string.DEBUG_FOTAG_ID), "has = " + imagecollectionmodel.get_has());
 
-        if(imagecollectionmodel.get_has() == 0) {
-            return;
-        } else {
+        if(imagecollectionmodel.get_has() == 1) {
             for (int i = 0; i < 10; ++i) {
                 outState.putInt("image_rate_" + i, imagecollectionmodel.get_imagemodel_list().get(i).get_rate());
             }
