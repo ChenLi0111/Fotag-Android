@@ -41,7 +41,7 @@ public class ItemView extends LinearLayout implements Observer {
         imageview = new ImageView(context);
         imageview.setImageDrawable(imagemodel.get_image());
 
-        dialog = new Dialog(context);
+        dialog = new Dialog(context, R.style.fullscreen);
         dialog.setContentView(imageview);
 
         image_button.setOnClickListener(new OnClickListener() {

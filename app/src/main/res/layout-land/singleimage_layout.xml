@@ -9,6 +9,7 @@
         android:id="@+id/singelimage"
         android:layout_width="300dp"
         android:layout_height="300dp"
+        android:scaleType="fitStart"
         android:visibility="visible" />
 
     <RatingBar
