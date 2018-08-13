@@ -1,4 +1,4 @@
-# A4 Fotag Mobile
+# Fotag Mobile
 
 ## From tool bar:
 The first button is the "load button", which loads 10 different images.<br />
@@ -21,3 +21,7 @@ One that is shown when the phone is held vertically, and one when it is held hor
 macOS High Sierra version 10.13.4<br />
 Android Studio Version 3.1.3<br />
 AVD: Pixel API 26
+
+## Screenshots
+![Alt text](https://github.com/yhggf45/Fotag-Android/raw/master/port.png)<br />
+![Alt text](https://github.com/yhggf45/Fotag-Android/raw/master/land.png)
