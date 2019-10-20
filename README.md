@@ -17,6 +17,9 @@ Touching it a second time can dismiss it, returning to the image grid.<br />
 This application supports two layouts:<br />
 One that is shown when the phone is held vertically, and one when it is held horizontally.<br />
 
+## To start:
+Use android studio to run the application.
+
 ## Development environment:
 macOS High Sierra version 10.13.4<br />
 Android Studio Version 3.1.3<br />
